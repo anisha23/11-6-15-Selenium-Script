@@ -1,0 +1,37 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+public class mobymax {
+		static String firstname="Anisha";
+		static String lastname ="Anisha";
+		static String zip="10007";
+		static String email="testAnisha@gmail.com";
+		static String password="Anisha123";
+		
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d=new FirefoxDriver();
+		d.get("http://mobymax.com");
+		d.manage().window().maximize();
+		d.manage().timeouts().implicitlyWait(3000, TimeUnit.SECONDS);
+		System.out.println("Moby max website is opened successfully");
+		d.findElement(By.name("data[FirstName]")).sendKeys(firstname);
+		d.findElement(By.name("data[LastName]")).sendKeys(lastname);
+		d.findElement(By.name("data[ZipCode]")).sendKeys(zip);
+		Thread.sleep(3000);
+		d.findElement(By.name("data[School]")).click();
+		d.findElement(By.id("542134")).click();
+		d.findElement(By.name("data[Email]")).sendKeys(email);
+		d.findElement(By.name("data[Password]")).sendKeys(password);
+		d.findElement(By.id("register-button")).click();
+		System.out.println("registration is completed successfully");
+		d.close();
+		d.quit();
+		
+	}
+
+}
